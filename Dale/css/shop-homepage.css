@@ -3,6 +3,14 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+#navbar-brand{
+  float: right;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 390px;
+  line-height: 20px;
+}
+}
 #tops{
     border-style: solid;
     border-width:2px;
