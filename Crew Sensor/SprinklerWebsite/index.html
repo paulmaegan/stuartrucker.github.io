@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" Sprinkler Monitor">
+    <meta name="author" content="Stuart Rucker">
+
+    <title>Stuart's Sprinkler</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    
+   
+    <!-- Header -->
+    <header id="top" class="header">
+	    <div class = "row" class = "bufferZone" >
+	        
+	            <h1 id = "titleofit">Sprinkler Monitor</h1>
+
+	    </div>
+        <section id="services" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+
+                    <h2>Current Settings</h2>
+                    <hr class="small">
+                    
+                    <div class="row">
+                        
+                        <div class="col-md-1 col-sm-6"> </div>
+                         <div class="col-md-2 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i id="zone1Glyph" class="fa fa-tint fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Drip Zone: </strong>
+                                    <strong id = "zone1"> </strong>
+
+                                </h4>
+                                <p>Drip System for all Small Shrubs</p>
+                                <a id = "buttonZone1" class="btn btn-light">toggle</a>
+                         </div>
+                         </div>
+                        <div class="col-md-2 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i id="zone2Glyph" class="fa fa-tint fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Zone 2: </strong>
+                                    <strong id = "zone2"></strong>
+
+                                </h4>
+                                <p>South Side of Grass in Front Yard</p>
+                                <a id = "buttonZone2" class="btn btn-light">toggle</a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i id="zone3Glyph"class="fa fa-tint fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Zone 3: </strong>
+                                    <strong id = "zone3"> </strong>
+                                </h4>
+                                <p>North Side of Grass In Front Yard</p>
+                                <a id = "buttonZone3" class="btn btn-light">toggle</a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i id="zone4Glyph" class="fa fa-tint fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Zone 4: </strong>
+                                    <strong id = "zone4"> </strong>
+                                </h4>
+                                <p>Small Grass Area In Back Yard</p>
+                                <a id = "buttonZone4" class="btn btn-light">toggle</a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i id="zone5Glyph" class="fa fa-tint fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Zone 5: </strong>
+                                    <strong id = "zone5"> </strong>
+                                </h4>
+                                <p>Large Grass Area in Back Yard</p>
+                                <a id = "buttonZone5" class="btn btn-light">toggle</a>
+                            </div>
+                        </div>
+                         <div class="col-md-1 col-sm-6"></div>
+                    </div>
+                    <!-- /.row (nested) -->
+              <h2>Moisture Reading</h2>
+                   <div class="progress">
+					  <div id= "moistureBar" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+
+					  </div>
+					</div>
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+    <div class = "row" class = "bufferZone" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4 class = "bottomPage"><strong>Sprinkler Monitor</strong>
+                    </h4>
+                     <h4 class = "bottomPage">Stuart Rucker
+                    </h4>
+                    <p class = "bottomPage">Follow me at </p>
+                    <p class = "bottomPage" href = "http://buildinprogress.herokuapp.com/users/stuart.a.rucker"> build in progress @ stuart.a.rucker</p>
+                    
+                   
+                    <hr class="small">
+                    <p class="bottomPage">Copyright &copy; Sprinkler Monitor 2014</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </header>
+
+
+    
+    
+    
+
+   
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+
+      var valve1;
+      var valve2;
+      var valve3;
+      var valve4;
+      var valve5;
+      var moisture;
+
+
+      var myDataRef = new Firebase('https://sprinklercontrol.firebaseio.com/');
+      var valvesRef = myDataRef.child("valves");
+      var moistureRef = myDataRef.child("moisture");
+     
+      function sendData(){
+		  valvesRef.set({
+		        valve1: {
+		          state1: valve1
+		        },
+		        valve2: {
+		          state2: valve2
+		        },        
+		        valve3: {
+		          state3: valve3
+		        },
+		        valve4: {
+		          state4: valve4
+		        },        
+		    	valve5: {
+		          state5: valve5
+		        }              
+	      });
+    }
+
+
+
+      myDataRef.on('value', function (snapshot) {
+	
+		  
+      	  //extracting data from javascipt object
+		  var data = snapshot.val();
+		  var value100 = data.valves;
+		 
+		  var value99 = value100.valve1;
+		  valve1 = value99.state1;
+		  var value97 = value100.valve2;
+		  valve2 = value97.state2;
+		  var value95 = value100.valve3;
+		  valve3 = value95.state3;
+		  var value93 = value100.valve4;
+		  valve4 = value93.state4;
+		  var value91 = value100.valve5;
+		  valve5 = value91.state5;
+		  setSettings();
+		  //sendData();
+		  console.log("running value function")
+
+
+		}, function (errorObject) {
+		  console.log('The read failed: ' + errorObject.code);
+		});
+
+
+	function setSettings(){
+    	if(valve1 == "1"){
+    		document.getElementById("zone1").innerHTML = "On";
+    		document.getElementById("zone1Glyph").style.color = "rgb(0,255,0)";
+    	}
+    	else{
+    		document.getElementById("zone1").innerHTML = "Off";
+    		document.getElementById("zone1Glyph").style.color = "rgb(255,0,0)";
+    	}
+    	if(valve2 == "1"){
+    		document.getElementById("zone2").innerHTML = "On";
+    		document.getElementById("zone2Glyph").style.color = "rgb(0,255,0)";
+    	}
+    	else{
+    		document.getElementById("zone2").innerHTML = "Off";
+    		document.getElementById("zone2Glyph").style.color = "rgb(255,0,0)";
+    	}
+    	if(valve3 == "1"){
+    		document.getElementById("zone3").innerHTML = "On";
+    		document.getElementById("zone3Glyph").style.color = "rgb(0,255,0)";
+    	}
+    	else{
+    		document.getElementById("zone3").innerHTML = "On";
+    		document.getElementById("zone3Glyph").style.color = "rgb(255,0,0)";
+    	}
+    	if(valve4 == "1"){
+    		document.getElementById("zone4").innerHTML = "On";
+    		document.getElementById("zone4Glyph").style.color = "rgb(0,255,0)";
+    	}
+    	else{
+    		document.getElementById("zone4").innerHTML = "Off";
+    		document.getElementById("zone4Glyph").style.color = "rgb(255,0,0)";
+    	}
+    	if(valve5 == "1"){
+    		document.getElementById("zone5").innerHTML = "On";
+    		document.getElementById("zone5Glyph").style.color = "rgb(0,255,0)";
+    	}
+    	else{
+    		document.getElementById("zone5").innerHTML = "Off";
+    		document.getElementById("zone5Glyph").style.color = "rgb(255,0,0)";
+    	}
+    	document.getElementById("moistureBar").style.width = moisture + "%";
+        if(moisture < 31){
+            document.getElementById("moistureBar").className = "progress-bar progress-bar-danger";
+        }
+        else if(moisture < 71){
+            document.getElementById("moistureBar").className = "progress-bar progress-bar-warning";
+        }
+        else{
+            document.getElementById("moistureBar").className = "progress-bar progress-bar-success";
+        }
+    }
+
+	 //toggle values with button click
+	 $( "#buttonZone1" ).click(function() {
+	  	if(valve1 == "0"){valve1 = "1"}
+	  	else{valve1 = "0"}
+	  	sendData();
+		});
+	$( "#buttonZone2" ).click(function() {
+	  	if(valve2 == "0"){valve2 = "1"}
+	  	else{valve2 = "0"}
+	  	sendData();
+		});
+	$( "#buttonZone3" ).click(function() {
+	  	if(valve3 == "0"){valve3 = "1"}
+	  	else{valve3 = "0"}
+	  	sendData();
+		});
+	$( "#buttonZone4" ).click(function() {
+	  	if(valve4 == "0"){valve4 = "1"}
+	  	else{valve4 = "0"}
+	  	sendData();
+		});
+	$( "#buttonZone5" ).click(function() {
+	  	if(valve5 == "0"){valve5 = "1"}
+	  	else{valve5 = "0"}
+	  	sendData();
+		});
+	moistureRef.on('child_added', function(snapshot) {
+		moisture = snapshot.val();
+		moistureRef.remove()  
+	});
+
+
+
+    </script>
+
+</body>
+
+</html>
