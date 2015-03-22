@@ -4,6 +4,10 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+.mabutton:hover{
+	background-color: #6A4A29;
+	color: black;
+}
 body {
     padding-top: 30px;
     background-color: #D6C2AD;
