@@ -1,18 +1,116 @@
-<!DOCTYPE html>
 <html>
-<body>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  </head>
+  <body>
+   <div id="bought" class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="hidealert()"><span aria-hidden="true">&times;</span></button>
+  <strong>Thank you!</strong> You will get weekly subscriptions now
+</div>
+    <div class="newsletter-subscribe-box">
+		<div class="container"><div class="row"><div class="span12">
+			<div class="newsletter-subscribe">
+				Subscribe to Weekly Newsletters. Never miss an issue again.
+				<button style = "float: right" onclick="addEmail()">Subscribe</button>
+				<input style = "float: right" type='text' id='nameInput' placeholder='Enter Email'>
+				 
+			</div>
+		</div></div></div>
+	</div>
 
-<h2>Subscribe to Exonian Email Newsletter</h2>
+<button onclick="myFunction()">Try it</button>
+    
+    <script>
+      var myDataRef = new Firebase('https://l2cpo2b8csu.firebaseio-demo.com/');
+      function addEmail(){
+      	 var name = $('#nameInput').val();
+          myDataRef.push({email: name);
+          $('#nameInput').val('');
+      }
+      function hidealert(){
+      	alert("Hello! I', an alert box!");
+      }
+      function myFunction() {
+    alert("I am an alert box!");
+}
+      
+    </script>
+  <style>
 
-<form action="MAILTO:ExonianUpdate@gmail.com" method="post" enctype="text/plain">
-Name:<br>
-<input type="text" name="name" value="your name"><br>
-E-mail:<br>
-<input type="text" name="mail" value="your email"><br>
+.newsletter-subscribe-box {
+	background: rgba(0,0,0,0.1);
+	margin-top: 15px;
+	padding: 10px 0;}
+.newsletter-subscribe {
+	background: #882121;
+	padding: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 15px;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+.newsletter-subscribe:hover{
+	background: #5F1717;
+}
 
-<input type="submit" value="subscribe">
-<input type="reset" value="Reset">
-</form>
-
-</body>
+.expo-breaking b {
+	font-size: 13px;
+	text-transform: uppercase;
+	color: rgba(0,0,0,0.5);
+}
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+strong {
+  font-weight: bold;
+}
+.alert-dismissable,
+.alert-dismissible {
+  padding-right: 35px;
+}
+.alert-dismissable .close,
+.alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
+}
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+button.close {
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
+  </style>
+    </body>
 </html>
