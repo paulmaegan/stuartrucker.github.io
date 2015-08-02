@@ -1,0 +1,69 @@
+/*!
+ * Start Bootstrap - 2 Col Portfolio HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #edecec !important;
+}
+.portfolio-item{
+    margin-bottom: 25px;
+}
+
+
+.card{
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    padding: 15px;
+}
+
+.pagination li a{
+    color: #009688;
+}
+.pagination .active a, .pagination .active a:hover{
+    border-color: #009688;
+    background-color: #009688;
+    color: #fff;
+}
+.pagination li a:hover{
+    color: rgb(0, 150, 136);
+}
+.pagination .disabled a{
+    color: rgb(0, 150, 136);
+}
+
+footer {
+    margin: 50px 0;
+}
+.carousel-holder{
+    margin-bottom: 50px;
+}
+
+
+@media screen and(min-width: 1200px){
+    .portfolio-item .card img{
+        height: 300.6px;
+    }
+}
+
+@media screen and(min-width: 992px){
+    .portfolio-item .card img{
+        height: 242.84px;
+    }
+}
+
+
+@media (min-width: 992px){
+    .info-description{
+        height: 323px;
+    }
+}
+
+@media (min-width: 1200px){
+    .info-description{
+        height: 390px;
+    }
+}
