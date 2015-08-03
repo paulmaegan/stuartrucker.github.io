@@ -1,0 +1,31 @@
+body{
+    background-image: url("sky.jpg");
+}
+#header {
+
+    font-size:22px;
+    font-family: "Gill Sans","Gill Sans MT",Calibri,sans-serif;
+    text-align:center;
+    padding:2px;
+}
+ .fix{
+    position:fixed;
+    bottom:0px;
+    left:0%;
+    margin-bottom: -2px;
+    height: 100px;
+    width:36%;
+  }
+.plantTable{
+  color:white;
+  text-align: center;
+  width: 20%;
+  height: 160px;
+  font-size: 30px;
+  border: black solid;
+  padding: 20px;
+}
+tbody{
+  background-color: #302013;
+}
+
