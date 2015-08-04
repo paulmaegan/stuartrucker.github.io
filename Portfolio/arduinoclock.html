@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Arduino Clock</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
+    <link href="../css/styles.css" rel="stylesheet">
+    <link href="../css/material-fullpalette.min.css" rel="stylesheet">
+    <link href="../css/ripples.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">Stuart</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li> <a href="../portfolio.html">Portfolio</a></li>
+                    <li> <a href="../resume.html">Resume</a> </li>
+                    <li> <a href="../contact.html">Contact</a> </li>
+                           
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Arduino Clock <small>Arduino, Adobe-Illustrator, Laser Cutter</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+         <div class="row carousel-holder">
+
+            <div class="col-md-6">
+                <div class="card shadow-z-1">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img class="slide-image" src="resources/arduinoclock/Slide1.jpg" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="resources/arduinoclock/Slide2.jpg" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="resources/arduinoclock/Slide3.jpg" alt="">
+                            </div>
+                             <div class="item">
+                                <img class="slide-image" src="resources/arduinoclock/Slide4.jpg" alt="">
+                            </div>
+                            <div class="item">
+                                <div style="position: relative;padding-bottom: 56.25%; /* 16:9 */padding-top: 25px; height: 0;">
+                                    <iframe  class = "slide-image" style="position: absolute;top: 0; left: 0;width: 100%;height: 100%;" width="640" height="360" src="https://www.youtube.com/embed/rThfhaiEXxc?rel=0" frameborder="0" allowfullscreen></iframe>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>  
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-z-1" style="overflow-y:auto;">
+                    <h3><u> Description </u></h3>
+                    <p>This laser cut, Arduino powered clock provides has an aesthetically pleasing laser cut frame. It icorporates both analog and digital features with 12 LED's lining the perimeter to denote hours, and a rotating wheel in the center to denote seconds. Using the control panel, the time can be adjusted, and an alarm can set.</p>
+                    <h3><u> Technical </u></h3>
+                    <p>
+                        The Base was designed by Adobe Illustrator and cut by a laser cutter at TechShop.The Arduino controls all 12 hour LED, 14 Inputs for the two 7-segment displays, and the 4 switches/buttons, using 4 daisy chained shift registers (8 outputs each). Next time, instead of using a breadboard for all these outputs, I will custom print a PCB. The seconds dial in the center is rotated by a Servo.
+                    </p>
+
+                    
+                    <h3><u> More</u></h3>
+                        <ul>
+                            <li> <a href = "http://buildinprogress.media.mit.edu/projects/1671/steps" target="_blank"> View award winning documentation on MIT's BuildInProgress </a>
+                            </li>
+                           
+                        </ul>
+                  
+                   
+                        
+                </div>
+            </div>
+
+        </div>
+
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Stuart Rucker 2015</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Material Design for Bootstrap -->
+    <script src="../js/material.min.js"></script>
+    <script src="../js/ripples.min.js"></script>
+    <script>
+    $.material.init();
+    $('input[name="my-checkbox"]').bootstrapSwitch('state', true, true);
+    </script>
+
+
+</body>
+
+</html>
