@@ -1,0 +1,58 @@
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
+<script type="text/javascript">
+
+var geocoder = new google.maps.Geocoder();
+var address = "new york";
+var count = 0;
+var ref = new Firebase("https://exoniandatabase.firebaseio.com/users");
+ref.once("value", function(snapshot) {
+  // The callback function will get called twice, once for "fred" and once for "barney"
+  snapshot.forEach(function(childSnapshot) {
+    // key will be "fred" the first time and "barney" the second time
+   
+   	if(count%5 == 0) {alert("Wait a seconde before ok");}
+    
+    var key = childSnapshot.key();
+   	var address = childSnapshot.child("Address").val() + ", " + childSnapshot.child("City").val() + ", " +childSnapshot.child("State").val() + " " + childSnapshot.child("Zip").val() + " " + childSnapshot.child("Country").val();
+   	if(parseFloat(childSnapshot.child("lat").val())){
+		 //   	geocoder.geocode( { 'address': address}, function(results, status) {
+
+			// 	if (status == google.maps.GeocoderStatus.OK) {
+			// 	  	var latitude = results[0].geometry.location.lat();
+			// 		var longitude = results[0].geometry.location.lng();
+			// 	    console.log(address + ": " + latitude  + " " + longitude);
+			// 	    ref.child(key).child("lat").set(latitude);
+			// 	    ref.child(key).child("lon").set(longitude);
+
+			//    } else{
+			//    	console.log("Failure")
+			//    }
+			// }); 
+  			console.log(parseFloat(childSnapshot.child("lat").val()))
+	}else{
+			count ++;
+			  	geocoder.geocode( { 'address': address}, function(results, status) {
+
+				if (status == google.maps.GeocoderStatus.OK) {
+				  	var latitude = results[0].geometry.location.lat();
+					var longitude = results[0].geometry.location.lng();
+				    console.log(address + ": " + latitude  + " " + longitude);
+				    ref.child(key).child("lat").set(latitude);
+				    ref.child(key).child("lon").set(longitude);
+
+			   } else{
+			   	console.log("Failure")
+			   }
+			}); 
+	}
+
+  });
+});
+
+
+	
+</script>
+<html>
+
+</html>
