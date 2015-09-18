@@ -1,0 +1,156 @@
+<html>
+   <head>
+      <style>
+         .letter{
+         page-break-after:always;
+         padding: 1in;
+         font-size: 15px;
+         }
+         @media print
+         {    
+         .no-print, .no-print *
+         {
+         display: none !important;
+         }
+         body {
+         width: 8.5in;
+         margin: 0in .1875in;
+         }
+         }
+         .label{
+         /* Avery 5160 labels -- CSS and HTML by MM at Boulder Information Services */
+         width: 2.025in; /* plus .6 inches from padding */
+         height: .875in; /* plus .125 inches from padding */
+         padding: .125in .3in 0;
+         margin-right: .125in; /* the gutter */
+         float: left;
+         text-align: center;
+         overflow: hidden;
+         font-size: 13px;
+         outline: 1px dotted; /* outline doesn't occupy space like border does */
+         }
+         .page-break  {
+         clear: left;
+         display:block;
+         page-break-after:always;
+         }
+      </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script>
+         var currentTime = new Date().getTime();
+         console.log("currentDate: " + currentTime)
+         var warningTime = 28965600000;
+         function printo	(){
+         	
+         	var o = tsvToArray($("#Onlineinput").val());
+         	var p = tsvToArray($("#paperInput").val());
+         	
+         	var count  = 1;
+         
+         	//generate the labels for the paper subscribers
+         	for(var i = 1; i < p.length; i ++){	
+         		//new page every 30
+         		if(count != 1 && (count-1) % 30 == 0){
+         			$("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+         		}
+
+
+         		var appendage = p[i][1] + " " + p[i][2]  + "<br>" + 
+         						p[i][3] + "<br>" + 
+         						p[i][4] + ", " + p[i][5] + " " + p[i][6] + " " + p[i][7] + "<br><br>";
+         		var dateSubscriber = Date.parse(p[i][8]);
+         		
+         		if(dateSubscriber  < currentTime + 60*60*1000*24*20){
+         			appendage = "<b>" + appendage + "</b>";
+         			addLetter(p[i][1] + " " + p[i][2], p[i][8]);
+         		}
+
+         		$("#labels").append("<div class = 'label'>" + appendage + "</div>");
+
+         		count ++;
+         	}
+
+         	//generate the labels for the online subscribers
+         	for(var i = 1; i < o.length; i ++){	
+         		//new page every 30
+         		if(count != 1 && (count-1) % 30 == 0){
+         			$("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+         		}
+
+
+         		var appendage = o[i][2] + " " + o[i][3]  + "<br>" + 
+         						o[i][5] + "<br>";
+         		if(o[i][6].length > 1){appendage += o[i][6] + "<br>"}//optional address lines
+         		if(o[i][7].length > 1){appendage += o[i][7] + "<br>"}
+				appendage += o[i][8] + ", " + o[i][9] + " " + o[i][11] + " " + o[i][10] + "<br><br>";
+         		
+         		var dateSubscriber = Date.parse(o[i][13]);
+         		
+         		if(dateSubscriber + warningTime  < currentTime ){
+         			appendage = "<b>" + appendage + "</b>";
+         			var df = new Date(o[i][13]);
+         			df.setDate(df.getDate() + 365) ;
+         			addLetter(o[i][2] + " " + o[i][3], df.toLocaleDateString());
+         		}
+
+
+         		$("#labels").append("<div class = 'label'>" + appendage + "</div>");
+
+         		count ++;
+         	}
+         	
+         	window.print();
+         
+         }
+         
+         function tsvToArray( inputText){
+         	var lines = inputText.split("\n");
+         	var returnMe = [[]];
+         
+         	for(var i = 0; i < lines.length; i ++){
+         		if(lines[i].length > 8){
+         			returnMe[i] = lines[i].split("\t")
+         		}
+         		
+         	}
+         	return returnMe	;
+         }
+
+         function addLetter(name, date){
+         	  $("#letters").append("<div class = 'letter' > Dear " + name + "<br><br> We are sorry to say that your subscription to <i>the Exonian</i> will expire on " + 
+                       date + 
+                        ". If you would like to renew your subscription, send a new check to the address below for $75 (or $125 for international) to renew your subscription. If you beleive that  your subscription is not yet due to expire, please email us at exonianbb@gmail.com. <br><br><br> Sincerely, <br> Exonian Business Board<br><br><br>"+
+                                "PO 2465 <br>"+
+                               "20 Main Street <br>"+
+                               "Phillips Exeter Academy <br>"+
+                               "Exeter, NH, 03833  </div>")
+         }
+      </script>
+   </head>
+   <body>
+      <div class = "no-print" style = "width: 100%">
+         <h1> Copy & Paste to generate Labels </h1>
+         <u>Directions: </u><br>
+         <ul>
+         	<li> Copy and paste the contents of "Online Subscribers Info" and "Master Subscriber Database" from exonianbb@gmail.com google drive in the circulation folder</li>
+         	<li> When printing, set margins to "none"</li>
+         </ul>
+         <hr>
+         <div style = "width: 100%">
+            <h6> Paste the online Data spreadsheet </h6>
+            <textarea id = "Onlineinput"> </textarea>
+         </div>
+         <div style = "width: 100%">
+            <h6> Paste the paper Data spreadsheet </h6>
+            <textarea id = "paperInput"> </textarea>
+         </div>
+         <button onclick = "printo()">Click to Generate & Print</button>
+      </div>
+      <div id = "labels">
+      	<div style = "height: .5in;"></div>
+      </div>
+      <div class = "page-break"></div>
+      <div id = "letters">
+      </div>
+   </body>
+</html>
