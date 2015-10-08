@@ -1,3 +1,4 @@
+
 <html>
    <head>
       <style>
@@ -40,84 +41,103 @@
          var currentTime = new Date().getTime();
          console.log("currentDate: " + currentTime)
          var warningTime = 28965600000;
-         function printo	(){
-         	
-         	var o = tsvToArray($("#Onlineinput").val());
-         	var p = tsvToArray($("#paperInput").val());
-         	
-         	var count  = 1;
+         function printo   (){
+            
+            var o = tsvToArray($("#Onlineinput").val());
+            var oConfirm = tsvToArray($("#onlineConfirm").val());
+            var p = tsvToArray($("#paperInput").val());
+
+            //
+            
+            var count  = 1;
          
-         	//generate the labels for the paper subscribers
-         	for(var i = 1; i < p.length; i ++){	
-         		//new page every 30
-         		if(count != 1 && (count-1) % 30 == 0){
-         			$("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
-         		}
+            //generate the labels for the paper subscribers
+            for(var i = 1; i < p.length; i ++){ 
+               //new page every 30
+               if(count != 1 && (count-1) % 30 == 0){
+                  $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+               }
 
 
-         		var appendage = p[i][1] + " " + p[i][2]  + "<br>" + 
-         						p[i][3] + "<br>" + 
-         						p[i][4] + ", " + p[i][5] + " " + p[i][6] + " " + p[i][7] + "<br><br>";
-         		var dateSubscriber = Date.parse(p[i][8]);
-         		
-         		if(dateSubscriber  < currentTime + 60*60*1000*24*20){
-         			appendage = "<b>" + appendage + "</b>";
-         			addLetter(p[i][1] + " " + p[i][2], p[i][8]);
-         		}
+               var appendage = p[i][1] + " " + p[i][2]  + "<br>" + 
+                           p[i][3] + "<br>" + 
+                           p[i][4] + ", " + p[i][5] + " " + p[i][6] + " " + p[i][7] + "<br><br>";
+               var dateSubscriber = Date.parse(p[i][8]);
+               
+               if(dateSubscriber  < currentTime + 60*60*1000*24*20){
+                  appendage = "<b>" + appendage + "</b>";
+                  addLetter(p[i][1] + " " + p[i][2], p[i][8]);
+               }
 
-         		$("#labels").append("<div class = 'label'>" + appendage + "</div>");
+               $("#labels").append("<div class = 'label'>" + appendage + "</div>");
 
-         		count ++;
-         	}
+               count ++;
+            }
 
-         	//generate the labels for the online subscribers
-         	for(var i = 1; i < o.length; i ++){	
-         		//new page every 30
-         		if(count != 1 && (count-1) % 30 == 0){
-         			$("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
-         		}
+            //generate the labels for the online subscribers
+            for(var i = 1; i < o.length; i ++){ 
+               //new page every 30
 
 
-         		var appendage = o[i][2] + " " + o[i][3]  + "<br>" + 
-         						o[i][5] + "<br>";
-         		if(o[i][6].length > 1){appendage += o[i][6] + "<br>"}//optional address lines
-         		if(o[i][7].length > 1){appendage += o[i][7] + "<br>"}
-				appendage += o[i][8] + ", " + o[i][9] + " " + o[i][11] + " " + o[i][10] + "<br><br>";
-         		
-         		var dateSubscriber = Date.parse(o[i][13]);
-         		
-         		if(dateSubscriber + warningTime  < currentTime ){
-         			appendage = "<b>" + appendage + "</b>";
-         			var df = new Date(o[i][13]);
-         			df.setDate(df.getDate() + 365) ;
-         			addLetter(o[i][2] + " " + o[i][3], df.toLocaleDateString());
-         		}
+               var appendage = o[i][2] + " " + o[i][3]  + "<br>" + 
+                           o[i][5] + "<br>";
+               if(o[i][6].length > 1){appendage += o[i][6] + "<br>"}//optional address lines
+               if(o[i][7].length > 1){appendage += o[i][7] + "<br>"}
+            appendage += o[i][8] + ", " + o[i][9] + " " + o[i][11] + " " + o[i][10] + "<br><br>";
+               
+               var dateSubscriber = Date.parse(o[i][13]);
+               
+               if(dateSubscriber + warningTime  < currentTime ){
+                  appendage = "<b>" + appendage + "</b>";
+                  var df = new Date(o[i][13]);
+                  df.setDate(df.getDate() + 365) ;
+                  addLetter(o[i][2] + " " + o[i][3], df.toLocaleDateString());
+               }
+
+               //confirm them
+               var id = o[i][0];
+               console.log(id);
+               for(var k = 0; k < oConfirm.length; k ++){
+                  if(oConfirm[k][0] == id){
+                     if(oConfirm[k][5] == "Success"){
+                        if(count != 1 && (count-1) % 30 == 0){
+                           $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+                        }
+
+                        $("#labels").append("<div class = 'label'>" + appendage + "</div>");
+                                     
 
 
-         		$("#labels").append("<div class = 'label'>" + appendage + "</div>");
 
-         		count ++;
-         	}
-         	
-         	window.print();
+                        count ++;
+
+                     }
+                  }
+               }
+               
+
+               
+            }
+            
+            window.print();
          
          }
          
          function tsvToArray( inputText){
-         	var lines = inputText.split("\n");
-         	var returnMe = [[]];
+            var lines = inputText.split("\n");
+            var returnMe = [[]];
          
-         	for(var i = 0; i < lines.length; i ++){
-         		if(lines[i].length > 8){
-         			returnMe[i] = lines[i].split("\t")
-         		}
-         		
-         	}
-         	return returnMe	;
+            for(var i = 0; i < lines.length; i ++){
+               if(lines[i].length > 8){
+                  returnMe[i] = lines[i].split("\t")
+               }
+               
+            }
+            return returnMe   ;
          }
 
          function addLetter(name, date){
-         	  $("#letters").append("<div class = 'letter' > Dear " + name + "<br><br> We are sorry to say that your subscription to <i>the Exonian</i> will expire on " + 
+              $("#letters").append("<div class = 'letter' > Dear " + name + "<br><br> We are sorry to say that your subscription to <i>the Exonian</i> will expire on " + 
                        date + 
                         ". If you would like to renew your subscription, send a new check to the address below for $75 (or $125 for international) or subscribe at <a>http://theexonian.com/subscribe/</a>. If you beleive that  your subscription is not yet due to expire, please email us at exonianbb@gmail.com. <br><br><br> Sincerely, <br> Exonian Business Board<br><br><br>"+
                                 "PO 2465 <br>"+
@@ -132,22 +152,26 @@
          <h1> Copy & Paste to generate Labels </h1>
          <u>Directions: </u><br>
          <ul>
-         	<li> Copy and paste the contents of "Online Subscribers Info" and "Master Subscriber Database" from exonianbb@gmail.com google drive in the circulation folder</li>
-         	<li> When printing, set margins to "none"</li>
+            <li> Copy and paste the contents of "Online Subscribers Info" and "Master Subscriber Database" from exonianbb@gmail.com google drive in the circulation folder</li>
+            <li> When printing, set margins to "none"</li>
          </ul>
          <hr>
          <div style = "width: 100%">
-            <h6> Paste the online Data spreadsheet </h6>
+            <h6> Paste the onlineSubscriberInfo spreadsheet </h6>
             <textarea id = "Onlineinput"> </textarea>
          </div>
+          <div style = "width: 100%">
+            <h6> Paste the onlineSubscriberPaymentStatus spreadsheet </h6>
+            <textarea id = "onlineConfirm"> </textarea>
+         </div>
          <div style = "width: 100%">
-            <h6> Paste the paper Data spreadsheet </h6>
+            <h6> Paste the Master Subsriber Database spreadsheet </h6>
             <textarea id = "paperInput"> </textarea>
          </div>
          <button onclick = "printo()">Click to Generate & Print</button>
       </div>
       <div id = "labels">
-      	<div style = "height: .5in;"></div>
+         <div style = "height: .5in;"></div>
       </div>
       <div class = "page-break"></div>
       <div id = "letters">
