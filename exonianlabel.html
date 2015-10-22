@@ -39,7 +39,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script>
          var currentTime = new Date().getTime();
-         console.log("currentDate: " + currentTime)
+      
          var warningTime = 28965600000;
          function printo   (){
             
@@ -83,8 +83,11 @@
                            o[i][5] + "<br>";
                if(o[i][6].length > 1){appendage += o[i][6] + "<br>"}//optional address lines
                if(o[i][7].length > 1){appendage += o[i][7] + "<br>"}
-            appendage += o[i][8] + ", " + o[i][9] + " " + o[i][11] + " " + o[i][10] + "<br><br>";
-               
+               appendage += o[i][8] + ", " + o[i][9] + " " + o[i][11];
+               if(o[i][10] != "United States")appendage += " " + o[i][10];
+               appendage += "<br><br>";
+
+               console.log(appendage)
                var dateSubscriber = Date.parse(o[i][13]);
                
                if(dateSubscriber + warningTime  < currentTime ){
@@ -96,7 +99,6 @@
 
                //confirm them
                var id = o[i][0];
-               console.log(id);
                for(var k = 0; k < oConfirm.length; k ++){
                   if(oConfirm[k][0] == id){
                      if(oConfirm[k][5] == "Success"){
