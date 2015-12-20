@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exonian Email Remove</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+	<script>
+		var ref = new Firebase("https://emailexonian.firebaseio.com/");
+				
+		function sub(){
+			
+			var email = $("#enteremail").val()
+			var idsToRemove = [];
+			ref.once("value", function(allMessagesSnapshot) {
+			  allMessagesSnapshot.forEach(function(messageSnapshot) {
+			    
+			    if(messageSnapshot.val() === email){
+					idsToRemove.push(messageSnapshot.key())
+			    }
+			   
+			  
+			  });
+
+			  for(var i = 0; i <idsToRemove.length; i ++ ){
+			  	ref.child(idsToRemove[i]).remove();
+			  }
+			  alert(email + " has been removed");
+			  $("#enteremail").val("")
+
+			});
+			
+		}
+		
+		
+	</script>
+</head>
+<body>
+<h1> Enter the email you would like to remove from the Exonian Newsletter </h1>
+<input type="text" id="enteremail" placeholder="jane.doe@example.com">
+<button onclick="sub()">Submit </button>
+<br>
+<p> Email exonianbb@gmail.com if you have any questions </p>
+</body>
+</html>
