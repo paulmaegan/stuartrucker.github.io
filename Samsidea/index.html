@@ -124,8 +124,8 @@
 
                    var appendage = person.First + " " + person.Last  + "<br>" + 
                            person.Address1 + "<br>";
-                    if(person.Address1 != ""){appendage += person.Address1 + "<br>";}
-                    if(person.Address2 != ""){appendage += person.Address2 + "<br>";}
+                    if(person.Address1 != ""){appendage += person.Address2 + "<br>";}
+                    if(person.Address2 != ""){appendage += person.Address3 + "<br>";}
                      appendage += person.City + ", " + person.State + " " + zip;
                      if(person.Country != "United States"){appendage += "<Br>" + person.Country;}
                      appendage += "<br>";
