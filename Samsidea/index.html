@@ -3,13 +3,13 @@
    <head>
       <title>Automatic Exnonian Printing</title>
       <style>
-          html{
-           background: url(background.PNG) no-repeat center center fixed; 
-          -webkit-background-size: cover;
-          -moz-background-size: cover;
-          -o-background-size: cover;
-          background-size: cover;
-          }
+         html{
+         background: url(background.PNG) no-repeat center center fixed; 
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+         }
          .letter{
          page-break-after:always;
          padding: 1in;
@@ -31,12 +31,15 @@
          width: 2.025in; /* plus .6 inches from padding */
          height: .9in; /* plus .125 inches from padding */
          padding: .125in .3in 0;
-         margin-right: .125in; /* the gutter */
-         float: left;
+         margin: 5in auto auto auto;
          text-align: center;
          overflow: hidden;
-         font-size: 13px;
-         outline: 1px dotted; /* outline doesn't occupy space like border does */
+         font-size: 19px;
+         -webkit-transform: rotate(270deg);
+         -moz-transform: rotate(270deg);
+         -o-transform: rotate(270deg);
+         -ms-transform: rotate(270deg);
+         transform: rotate(270deg);
          }
          .page-break  {
          clear: left;
@@ -78,19 +81,20 @@
                if(data[i].Country != ""){appendage += "<Br>" + data[i].Country;}
                appendage += "<br>";
               $("#labels").append("<div class = 'label'>" + appendage + "</div>");
-              totalMade ++;
-              if(totalMade > 0 && totalMade % 30 == 0){
-                $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
-              }
+              $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+              // totalMade ++;
+              // if(totalMade > 0 && totalMade % 30 == 0){
+              //   $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+              // }
            }
          }
-        var info;
-        var confirm;
-        var doneinfo = false;
-        var doneconfirm = false;
-
-        
-        function onlineFunc(data, tabletop) {
+         var info;
+         var confirm;
+         var doneinfo = false;
+         var doneconfirm = false;
+         
+         
+         function onlineFunc(data, tabletop) {
           
           info = data;
           doneinfo = true;
@@ -98,21 +102,21 @@
           if(doneconfirm && doneinfo){
             console.log("a");
             doit();}
-
-        }
-        function online1Func(data, tabletop) {
+         
+         }
+         function online1Func(data, tabletop) {
             confirm = data;
             doneconfirm = true;
-
+         
             if(doneconfirm && doneinfo){
               console.log("b");
               doit();}
-
-
+         
+         
             
-        }
-
-        function doit(){
+         }
+         
+         function doit(){
          console.log("running doit");
            for(var i = 0; i < info.length; i ++){
               var person = info[i];
@@ -121,7 +125,7 @@
                     
                   var zip = person.Zip;
                   if(zip && zip.length == 4) zip = "0" + zip;
-
+         
                    var appendage = person.First + " " + person.Last  + "<br>" + 
                            person.Address1 + "<br>";
                     if(person.Address2 != ""){appendage += person.Address2 + "<br>";}
@@ -129,28 +133,25 @@
                      appendage += person.City + ", " + person.State + " " + zip;
                      if(person.Country != "United States"){appendage += "<Br>" + person.Country;}
                      appendage += "<br>";
-
+         
                       $("#labels").append("<div class = 'label'>" + appendage + "</div>");
-              totalMade ++;
-              if(totalMade > 0 && totalMade % 30 == 0){
-                $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
-              }
+                      $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+              // totalMade ++;
+              // if(totalMade > 0 && totalMade % 30 == 0){
+              //   $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+              // }
                 }
               }
             }
-        }
-
-
+         }
+         
+         
       </script>
    </head>
    <body>
       <div class = "no-print" style = "width: 100%">
-        
-        
-
-        
-      <h1> Automatic Printing <small style = "font-size: 16px;">made by Stuart, impeded by Sam</small><button style= "margin-left: 20px;" onclick = "window.print();">Let the Magic Begin!</button></button> </h1>
-      <p> Remeber to set margins to "none", and add "0" to the begining to zip codes in "subscription info" spreadsheet" </p>
+         <h1> Automatic Printing <small style = "font-size: 16px;">made by Stuart, impeded by Sam</small><button style= "margin-left: 20px;" onclick = "window.print();">Let the Magic Begin!</button></button> </h1>
+         <p> Remeber to set margins to "none", and add "0" to the begining to zip codes in "subscription info" spreadsheet" </p>
       </div>
       <div id = "labels">
          <div style = "height: .5in;"></div>
