@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://local-app.purechat.com/Scripts/vendor/jquery-2.1.1.min.v-3400-1.js"></script>
+	<script src="http://local-app.purechat.com/Scripts/widgetjs/widgetscript-combine.v-3400-1.js"></script>
+	<meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0"/>
+	<script>
+		$(function() {
+			pureChat = {};
+			pcjq = $;
+			pc_ = _;
+			backbone = Backbone;
+			pureChat.templates = templates;
+
+			function NewPcWidget(connectionSettings) {
+
+				connectionSettings.pureServerUrl = connectionSettings.pureServerUrl || 'https://www.purechat.com';
+				var dataController;
+
+				var dataControllerOptions = {
+					test: false,
+					widgetId: connectionSettings.widgetId || connectionSettings.c,
+					connectionSettings: connectionSettings,
+					isWidget: connectionSettings.isWidget || connectionSettings.f,
+					isOperator: false,
+					poppedOut: connectionSettings.poppedOut,
+					pureServerUrl: connectionSettings.pureServerUrl,
+					cdnServerUrl: connectionSettings.cdnServerUrl,
+					apiCdnServerUrl: connectionSettings.apiCdnServerUrl,
+					chatServerConnection: pureChat,
+					connectionInfo: {
+						roomId: connectionSettings.e.room.id,
+						userId: connectionSettings.e.user.id,
+						authToken: connectionSettings.e.user.authToken,
+						chatId: connectionSettings.e.room.chatid
+					},
+					renderInto: $('body')
+				};
+
+
+				if (dataControllerOptions.test) {
+					dataController = new purechatApp.Controllers.TestDataController(dataControllerOptions);
+				} else {
+					dataController = new purechatApp.Controllers.PCDataController(dataControllerOptions);
+				}
+
+				var viewOptions = {
+					test: false,
+					pureServerUrl: connectionSettings.pureServerUrl,
+					cdnServerUrl: connectionSettings.cdnServerUrl,
+					apiCdnServerUrl: connectionSettings.apiCdnServerUrl,
+					widgetId: connectionSettings.widgetId || connectionSettings.c,
+					isWidget: connectionSettings.isWidget || connectionSettings.f,
+					isOperator: (connectionSettings.d == undefined ? false : connectionSettings.d),
+					renderInto: $('body'),
+					dataController: dataController,
+					poppedOut: connectionSettings.poppedOut,
+					origin: connectionSettings.origin,
+					BrowserDetails: {"Browser":"Chrome","Version":"51.0","OS":"Windows","OsType":1}
+				};
+
+				/*
+				Base object for all PCWidgetState objects.
+				*/
+				var c1 = new purechatApp.Controllers.PureChatController(
+					new purechatApp.Models.WidgetSettings(viewOptions)
+				);
+				purechatApp.Notifications.controller = new purechatApp.Notifications.Controller({
+					settings: c1.options
+				});
+				return c1;
+
+			}
+
+			var w = window._pcwi = new NewPcWidget({
+				pureServerUrl: 'http://local-app.purechat.com'.length == 0 ? null : 'http://local-app.purechat.com',
+				cdnServerUrl: 'http://local-app.purechat.com',
+				apiCdnServerUrl: 'http://local-api.purechat.com',
+				c: '17ab0b42-04ba-4c79-ae30-2c3e14557839'.length == 0 ? null : '17ab0b42-04ba-4c79-ae30-2c3e14557839',
+				f: false,
+				e: {
+					user: {
+						displayName: ''.length == 0 ? null : '',
+						id: ''.length == 0 ? null : '',
+						authToken: ''.length == 0 ? null : ''
+					},
+					room: {
+						id: ''.length == 0 ? null : '',
+						chatid: ''.length == 0 ? null : ''
+					}
+				},
+				origin: 'http://www.scottsdaleaz.gov/',
+				poppedOut: true,
+				cookieName: 'purechatPoppedOut',
+				f: false,
+				isPoppedOut: true
+			});
+
+			function fixContentPositioning() {
+				if (!w.options.get('RequestFromMobileDevice') && !w.options.get('AllowWidgetOnMobile')) {
+					var headerHeight = $('.purechat-expanded .purechat-widget-header').outerHeight();
+					$('.purechat-expanded .purechat-content').css({
+						top: headerHeight
+					});
+				}
+			}
+
+			w.on('widget:ready', function() {
+				var chatModel = w.getChatModel();
+				var inRoomOnLoad = w.getDataController().checkInRoom() !== null && typeof w.getDataController().checkInRoom() !== 'undefined';
+				w.widgetLayout.expand(true, inRoomOnLoad);
+				fixContentPositioning();
+			});
+			$(window).on('resize.AdjustWidgetContent', fixContentPositioning);
+		});
+
+
+	</script>
+</head>
+<body class="purechat-popped-out">
+</body>
+</html>
