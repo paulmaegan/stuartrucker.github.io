@@ -1,0 +1,43 @@
+html{
+        background: url(background.PNG) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        }
+        .letter{
+        page-break-after:always;
+        padding: 1in;
+        font-size: 15px;
+        }
+        @media print
+        {
+        .no-print, .no-print *
+        {
+        display: none !important;
+        }
+        body {
+        width: 12in;
+        margin: 0in .1875in;
+        }
+        }
+        .label{
+        /* Avery 5160 labels -- CSS and HTML by MM at Boulder Information Services */
+        width: 4.025in; /* plus .6 inches from padding */
+        height: .9in; /* plus .125 inches from padding */
+        padding: .125in .3in 0;
+        margin: 5in auto auto 4in;
+        text-align: center;
+        overflow: visible;
+        font-size: 23px;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        }
+        .page-break  {
+        clear: left;
+        display:block;
+        page-break-after:always;
+        }
