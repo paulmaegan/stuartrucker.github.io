@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Automatic Exnonian Printing</title>
+        <style>
+            html {
+                background: url(background.PNG) no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+
+            .letter {
+                page-break-after: always;
+                /*padding: 1in;*/
+                font-size: 15px;
+            }
+
+            @media print {
+                .no-print,
+                .no-print * {
+                    display: none !important;
+                }
+                body {
+                    width: 8.5in;
+                    margin: 0in .1875in;
+                }
+            }
+
+            .label {
+            	-webkit-transform: rotate(90deg);
+                -moz-transform: rotate(90deg);
+                -o-transform: rotate(90deg);
+                -ms-transform: rotate(90deg);
+                transform: rotate(90deg);
+                /* Avery 5160 labels -- CSS and HTML by MM at Boulder Information Services */
+                width: 2.025in;
+                /* plus .6 inches from padding */
+                height: .9in;
+                /* plus .125 inches from padding */
+                padding: .125in .3in 0;
+                margin-right: auto;
+                margin-left: auto;
+                margin-top: 5.5in;
+                /* the gutter */
+                float: center;
+                text-align: center;
+                overflow: hidden;
+                font-size: 13px;
+                /*outline: 1px dotted;
+                /* outline doesn't occupy space like border does */
+            }
+
+            .page-break {
+                clear: left;
+                display: block;
+                page-break-after: always;
+            }
+        </style>
+        <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="google-spreadsheet.js"></script>
+
+        <script type="text/javascript" src="tabletop.js"></script>
+
+        <script type="text/javascript">
+            window.onload = function() {
+                init()
+            };
+
+            var master = '1R3FEuZara22iPOcLsTEQT7Jbw7jiSPWVN_RnMo4CQZw';
+            var online = '1oiVInTnKFQXLrX_l2i_BpUNbdsIabIBfob4qMPJHqyk';
+            var online1 = '1Er-RsbzIN21uBmpxlYIsrI0bs-n1-ABAEqo7jXPCL2s';
+
+            function init() {
+                Tabletop.init({
+                    key: master,
+                    callback: masterFunc,
+                    simpleSheet: true
+                })
+
+            }
+            function toUpperCase(txt) {
+              var str = txt.toLowerCase();
+            	 return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+            }
+
+
+
+            var totalMade = 0;
+
+            //append data from master spreadsheet
+            function masterFunc(data, tabletop) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+
+                    var appendage = toUpperCase(data[i].First) + " " + toUpperCase(data[i].Last) + "<br>" +
+                        data[i].Address + "<br>";
+
+                    appendage += data[i].City + ", " + data[i].State + " " + data[i].Zip;
+                    if (data[i].Country != "") {
+                        appendage += "<Br>" + data[i].Country;
+                    }
+                    appendage += "<br>";
+                    var date = new Date(data[i].Date);
+                    if(date > new Date()){
+                      $("#labels").append("<div class = 'label'>" + appendage + "</div>");
+                    }else{
+                      $("#labels").append("<div class = 'label'><b>" + appendage + "</b></div>");
+                    }
+
+                    // $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+                    totalMade++;
+                    //if (totalMade > 0 && totalMade % 30 == 0) {
+                        $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+                    //}
+                }
+
+                Tabletop.init({
+                        key: online,
+                        callback: onlineFunc,
+                        simpleSheet: true
+                    })
+                    //get data from first spreadsheet
+
+            }
+
+
+            var info;
+            var confirm;
+
+
+
+            function onlineFunc(data, tabletop) {
+                info = data;
+
+                Tabletop.init({
+                    key: online1,
+                    callback: online1Func,
+                    simpleSheet: true
+                })
+
+
+            }
+
+            function online1Func(data, tabletop) {
+                confirm = data;
+                doit();
+            }
+
+            function doit() {
+                console.log("running doit");
+
+                for (var i = 0; i < info.length; i++) {
+                    var person = info[i];
+                    // console.log(person);
+                    for (var k = 0; k < confirm.length; k++) {
+                        if (person.id === confirm[k].id && confirm[k].PaymentStatus === "Success") {
+
+                            var zip = person.Zip;
+                            if (zip && zip.length == 4) zip = "0" + zip;
+
+                            var appendage = toUpperCase(person.First) + " " + toUpperCase(person.Last) + "<br>" +
+                                person.Address1 + "<br>";
+                            if (person.Address2 != "") {
+                                appendage += person.Address2 + "<br>";
+                            }
+                            if (person.Address3 != "") {
+                                appendage += person.Address3 + "<br>";
+                            }
+                            appendage += person.City + ", " + person.State + " " + zip;
+                            if (person.Country != "United States") {
+                                appendage += "<Br>" + person.Country;
+                            }
+                            appendage += "<br>";
+                            var date = new Date();
+                            var potential = new Date(person.Date);
+                            potential.setFullYear(new Date().getFullYear() + 1);
+
+
+                            console.log(  potential);
+                            // console.log(date);
+                            if(date < potential){
+                              $("#labels").append("<div class = 'label'>" + appendage + "</div>");
+                            }else{
+                                $("#labels").append("<div class = 'label'><b>" + appendage + "</b></div>");
+                            }
+
+                            totalMade++;
+                            // if (totalMade > 0 && totalMade % 30 == 0) {
+                                $("#labels").append("<div class='page-break'></div><div style='height:.5in'></div>");
+                            // }
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="no-print" style="width: 100%">
+            <h1> Automatic Printing <small style = "font-size: 16px;">made by Stuart, impeded by Sam</small><button style= "margin-left: 20px;" onclick = "window.print();">Let the Magic Begin!</button></button> </h1>
+            <p> Remeber to set margins to "none", and add "0" to the begining to zip codes in "subscription info" spreadsheet" </p>
+        </div>
+        <div id="labels">
+            <div style="height: .5in;"></div>
+        </div>
+        <div class="page-break"></div>
+        <div id="letters">
+        </div>
+    </body>
+
+</html>
