@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <title>SAMS IDEA</title>
+        <style>
+            .result-button {
+                height: 50px;
+                width: 100%;
+                margin-left: 5px;
+                margin-right: 5px
+            }
+            .other-notes{
+              width:100%;
+              margin-bottom: 10px;
+            }
+        </style>
+
+        <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+        <script>
+          var todo = new Firebase("https://console.firebase.google.com/project/samsidea3-7f2e6/database/data/to-do")
+          //get a random parent
+
+        </script>
+    </head>
+
+    <body>
+
+
+        <!-- Page Content -->
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1>Sams idea <span style ="color:#66a3ff">3.0</span></h1>
+                    <hr style="border-color: #000000; width: 100%;">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3> Parent Information </h3>
+                            <div class="panel panel-default">
+                                <div style="text-align: left" class="panel-footer"><b>Parent Name:</b> Sam Michaels</div>
+                                <div style="text-align: left" class="panel-footer"><b>Student Name:</b> Sam Michaels</div>
+                                <div style="text-align: left" class="panel-footer"><b>Phone Number:</b> 911</div>
+
+                                <div class="panel-body">
+                                    <h4>Other Notes </h4>
+                                    <p>asdlfasdklfja dlkjfhald sfjahdfl kajhdf kaljdhf lakjdhfl akdjfhal djfhal dfjhald fahsjl </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3> Your exeter email <small>(without @exeter.edu)</small></h3>
+                            <div class="input-group" style="width: 100%">
+                                <input type="text" style="width: 100%" class="form-control" placeholder="ex. samichaels" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-footer"><b>Our Pitch</b></div>
+                                <div class="panel-body">
+                                    <p>Wealsjdhflak sdjfhlskd fjhalsdf jahlsdkfjas dlkfjahsdlfkjasdhf lakjdhf lakjdsfh alkjdsfha lkjdhf alkjdhfa lkdjshfa lkdjsfha lkdjfha ldjfhal kdjhf alskdjhf alkdjhf alskdjfhl asdjkfh alskdjfh alksdjfh laksjdfh alksjdhf
+                                        lakjdshfl as</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h3> Results</h3>
+                            <b><span style = "margin-top:20px;float: left" >Other Notes:</span></b>
+                            <textarea class = "other-notes"> </textarea>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-danger result-button">Don't call again</button>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-default result-button">Re-Queue</button>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-success result-button">$ale</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+
+
+</html>
