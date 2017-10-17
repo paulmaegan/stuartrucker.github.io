@@ -63,7 +63,7 @@
             };
                         
             var master = '1R3FEuZara22iPOcLsTEQT7Jbw7jiSPWVN_RnMo4CQZw';
-            var online = 'oiVInTnKFQXLrX_l2i_BpUNbdsIabIBfob4qMPJHqyk';
+            var online = '1oiVInTnKFQXLrX_l2i_BpUNbdsIabIBfob4qMPJHqyk';
             var online1 = '1Er-RsbzIN21uBmpxlYIsrI0bs-n1-ABAEqo7jXPCL2s';
 
             function init() {
@@ -112,7 +112,12 @@
 
                 Tabletop.init({
                         key: online,
-                        callback: onlineFunc,
+                        callback: 
+                    
+                    
+                    
+                    
+                    ,
                         simpleSheet: true
                     })
                     //get data from first spreadsheet
@@ -149,8 +154,8 @@
                     var person = info[i];
                     // console.log(person);
                     for (var k = 0; k < confirm.length; k++) {
-                        if (person.id == confirm[k].id && confirm[k].PaymentStatus == "Success") {
-                            
+                        if (person.id === confirm[k].id && confirm[k].PaymentStatus === "Success") {
+
                             var zip = person.Zip;
                             if (zip && zip.length == 4) zip = "0" + zip;
 
