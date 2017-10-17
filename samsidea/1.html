@@ -61,7 +61,7 @@
             window.onload = function() {
                 init()
             };
-                        
+
             var master = '1R3FEuZara22iPOcLsTEQT7Jbw7jiSPWVN_RnMo4CQZw';
             var online = '1oiVInTnKFQXLrX_l2i_BpUNbdsIabIBfob4qMPJHqyk';
             var online1 = '1Er-RsbzIN21uBmpxlYIsrI0bs-n1-ABAEqo7jXPCL2s';
@@ -112,12 +112,7 @@
 
                 Tabletop.init({
                         key: online,
-                        callback: 
-                    
-                    
-                    
-                    
-                    ,
+                        callback: onlineFunc,
                         simpleSheet: true
                     })
                     //get data from first spreadsheet
@@ -148,13 +143,17 @@
             }
 
             function doit() {
-                console.log("running doit");
+                // console.log(confirm);
+                // console.log(info);
 
                 for (var i = 0; i < info.length; i++) {
                     var person = info[i];
+
                     // console.log(person);
                     for (var k = 0; k < confirm.length; k++) {
+
                         if (person.id === confirm[k].id && confirm[k].PaymentStatus === "Success") {
+
 
                             var zip = person.Zip;
                             if (zip && zip.length == 4) zip = "0" + zip;
