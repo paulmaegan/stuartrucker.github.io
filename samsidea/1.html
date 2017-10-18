@@ -143,13 +143,17 @@
             }
 
             function doit() {
-                console.log("running doit");
+                // console.log(confirm);
+                // console.log(info);
 
                 for (var i = 0; i < info.length; i++) {
                     var person = info[i];
+
                     // console.log(person);
                     for (var k = 0; k < confirm.length; k++) {
+
                         if (person.id === confirm[k].id && confirm[k].PaymentStatus === "Success") {
+
 
                             var zip = person.Zip;
                             if (zip && zip.length == 4) zip = "0" + zip;
