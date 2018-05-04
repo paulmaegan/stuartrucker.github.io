@@ -1,133 +1,158 @@
 <!DOCTYPE html>
 <!-- saved from url=(0041)https://www.craigslist.org/about/sites#US -->
-<html class="canvas draggable fileAPI geolocation hashChange matchMedia picture pushState placeholder no-touchCapable transitions localStorage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>craigslist &gt; sites</title>
-
-    <meta name="description" content="List of all international craigslist.org online classifieds sites">
-<meta name="viewport" content="width=device-width,initial-scale=1"><link type="text/css" rel="stylesheet" media="all" href="./craigslist _ sites_files/cl.css"><link type="text/css" rel="stylesheet" media="all" href="./craigslist _ sites_files/leaflet.css"><link type="text/css" rel="stylesheet" media="all" href="./craigslist _ sites_files/MarkerCluster.css"><!--[if lt IE 9]>
-<script src="//www.craigslist.org/js/html5shiv.min.js?v=c0739b14a84b052680cdee44fea07435" type="text/javascript" ></script>
-
-<script src="//www.craigslist.org/js/respond-fork.min.js?v=247e877d69233f6f77bff30aca7b5473" type="text/javascript" ></script>
-
-<![endif]-->
-<!--[if lte IE 7]>
-<script src="//www.craigslist.org/js/json2.min.js?v=6e47a4bb061d538548771024390aa00b" type="text/javascript" ></script>
-
-<![endif]--></head>
-
-<body class="sites en desktop w1024 vsc-initialized">
-<style>
-  body{
-    /* background-image: url("aa.gif"); */
-  }
-  h4{
-    font-size: 50px;
-  }
-  li{
-    font-size:35px;
-  }
-</style>
-
-<script type="text/javascript"><!--
-    function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
-    var pagetype, pagemode;
-    (function(){
-        var h = document.documentElement;
-        h.className = h.className.replace('no-js', 'js');
-        var b = document.body;
-        var bodyClassList = b.className.split(/\s+/);;
-        pagetype = bodyClassList[0]; // dangerous assumption
-        var fmt = C('cl_fmt');
-        if ( fmt === 'regular' || fmt === 'mobile' ) {
-            pagemode = fmt;
-        } else if (screen.width <= 480) {
-            pagemode = 'mobile';
-        } else {
-            pagemode = 'regular';
-        }
-        pagemode = pagemode === 'mobile' ? 'mobile' : 'desktop';
-        bodyClassList.push(pagemode);
-        if (C('hidesearch') === '1' && pagemode !== 'mobile') {
-            bodyClassList.push('hide-search');
-        }
-        var width = window.innerWidth || document.documentElement.clientWidth;
-        if (width > 1000) { bodyClassList.push('w1024'); }
-        if (typeof window.sectionBase !== 'undefined') {
-            var mode = (decodeURIComponent(C('cl_tocmode') || '').match(new RegExp(window.sectionBase + ':([^,]+)', 'i')) || {})[1] || window.defaultView;
-            if (mode) {
-                bodyClassList.push(mode);
-            }
-        }
-        b.className = bodyClassList.join(' ');
-    }());
---></script>
-
-    <article class="page-container">
-        <div id="logo">Websites </div>
-
-        <section class="body">
-
-
-
-
-
+<html class="canvas draggable fileAPI geolocation hashChange matchMedia picture pushState placeholder no-touchCapable transitions localStorage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>craigslist &gt; sites</title>
+      <meta name="description" content="List of all international craigslist.org online classifieds sites">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <link type="text/css" rel="stylesheet" media="all" href="./craigslist _ sites_files/cl.css">
+      <link type="text/css" rel="stylesheet" media="all" href="./craigslist _ sites_files/leaflet.css">
+      <link type="text/css" rel="stylesheet" media="all" href="./craigslist _ sites_files/MarkerCluster.css">
+      <!--[if lt IE 9]>
+      <script src="//www.craigslist.org/js/html5shiv.min.js?v=c0739b14a84b052680cdee44fea07435" type="text/javascript" ></script>
+      <script src="//www.craigslist.org/js/respond-fork.min.js?v=247e877d69233f6f77bff30aca7b5473" type="text/javascript" ></script>
+      <![endif]-->
+      <!--[if lte IE 7]>
+      <script src="//www.craigslist.org/js/json2.min.js?v=6e47a4bb061d538548771024390aa00b" type="text/javascript" ></script>
+      <![endif]-->
+   </head>
+   <body class="sites en desktop w1024 vsc-initialized">
+      <style>
+         body{
+         /* background-image: url("aa.gif"); */
+         }
+         h4{
+         font-size: 40px;
+         }
+         li{
+         font-size:25px;
+         }
+      </style>
+      <script type="text/javascript"><!--
+         function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
+         var pagetype, pagemode;
+         (function(){
+             var h = document.documentElement;
+             h.className = h.className.replace('no-js', 'js');
+             var b = document.body;
+             var bodyClassList = b.className.split(/\s+/);;
+             pagetype = bodyClassList[0]; // dangerous assumption
+             var fmt = C('cl_fmt');
+             if ( fmt === 'regular' || fmt === 'mobile' ) {
+                 pagemode = fmt;
+             } else if (screen.width <= 480) {
+                 pagemode = 'mobile';
+             } else {
+                 pagemode = 'regular';
+             }
+             pagemode = pagemode === 'mobile' ? 'mobile' : 'desktop';
+             bodyClassList.push(pagemode);
+             if (C('hidesearch') === '1' && pagemode !== 'mobile') {
+                 bodyClassList.push('hide-search');
+             }
+             var width = window.innerWidth || document.documentElement.clientWidth;
+             if (width > 1000) { bodyClassList.push('w1024'); }
+             if (typeof window.sectionBase !== 'undefined') {
+                 var mode = (decodeURIComponent(C('cl_tocmode') || '').match(new RegExp(window.sectionBase + ':([^,]+)', 'i')) || {})[1] || window.defaultView;
+                 if (mode) {
+                     bodyClassList.push(mode);
+                 }
+             }
+             b.className = bodyClassList.join(' ');
+         }());
+         -->
+      </script>
+      <article class="page-container">
+         <div id="logo">Websites </div>
+         <section class="body">
             <div class="colmask">
-                <div style = "width:45%" class="box box_1">
-                    <h4>Music</h4>
-                    <ul>
-                      <li><a href="https://www.youtube.com/watch?v=5hxibHJOE5E">Jazz</a></li>
-<li><a href="https://bham.craigslist.org/">Placeholder</a></li>
-<li><a href="https://dothan.craigslist.org/">Placeholder</a></li>
-<li><a href="https://shoals.craigslist.org/">Placeholder</a></li>
+               <div class="box box_1">
+                  <h4>News</h4>
+                  <ul>
+                     <li><a href="https://news.google.com/">News.google.com</a></li>
+                     <li><a href="http://www.bbc.com/">Bbc.com</a></li>
+                     <li><a href="https://www.msn.com/en-us">msn.com</a></li>
 
-</ul>
-<h4>Events</h4>
-<ul>
- <li><a href="https://anchorage.craigslist.org/">Exeter</a></li>
- <li><a href="https://fairbanks.craigslist.org/">Placeholder</a></li>
- <li><a href="https://kenai.craigslist.org/">Placeholder</a></li>
- <li><a href="https://juneau.craigslist.org/">Placeholder</a></li>
-</ul>
-</div>
-<div style = "width:45%" class="box box_2">
-<h4>Weather</h4>
-<ul>
- <li><a href="https://flagstaff.craigslist.org/">Placeholder</a></li>
+                  </ul>
+                  <h4>Search</h4>
+                  <ul>
+                     <li><a href="https://www.google.com/">Google.com</a></li>
+                     <li><a href="https://www.bing.com/">Bing.com</a></li>
+                     <li><a href="https://www.ecosia.org/">Ecosia.org</a></li>
+                  </ul>
+                  <h4>Weather</h4>
+                  <ul>
+                     <li><a href="http://www.intellicast.com/Local/Weather.aspx?location=USNH0073">Intellicast.com</a></li>
+                  </ul>
+               </div>
+               <div class="box box_2">
 
-</ul>
-<h4>Games</h4>
-<ul>
-<li><a href="https://www.miniclip.com/games/en/">Miniclips</a></li>
-<li><a href="https://fortsmith.craigslist.org/">Placeholder</a></li>
-<li><a href="https://jonesboro.craigslist.org/">Placeholder</a></li>
-<li><a href="https://littlerock.craigslist.org/">Placeholder</a></li>
-<li><a href="https://texarkana.craigslist.org/">Placeholder</a></li>
-                          </ul>
-                        </div>
+                  <h4>Email</h4>
+                  <ul>
+                     <li><a href="https://gmail.com">Gmail.com</a></li>
+                     <li><a href="https://login.yahoo.com/">Login.yahoo.com</a></li>
+                     <li><a href="https://outlook.live.com/owa/">Outlook.com</a></li>
+                     <li><a href="https://www.icloud.com/#mail">iCloud</a></li>
+                  </ul>
 
+                  <h4>Social media</h4>
+                  <ul>
+                     <li><a href="https://Facebook.com">Facebook.com</a></li>
+                     <li><a href="https://plus.google.com">Plus.google.com</a></li>
+                     <li><a href="https://twitter.com">Twitter.com</a></li>
+                  </ul>
+                </div>
+                <div  class="box box_3">
+                  <h4>Social media</h4>
+                  <ul>
+                     <li><a href="https://Facebook.com">Facebook.com</a></li>
+                     <li><a href="https://plus.google.com">Plus.google.com</a></li>
+                     <li><a href="https://twitter.com">Twitter.com</a></li>
+                  </ul>
+                  <h4>Communication</h4>
+                  <ul>
+                     <li><a href="https://Messenger.com">Messenger.com</a></li>
+                     <li><a href="https://Skype.com">Skype.com</a></li>
+                     <li><a href="https://Hangouts.google.com">Hangouts.google.com</a></li>
+                  </ul>
+                </div>
+                <div  class="box box_4">
+                  <h4>Education</h4>
+                  <ul>
+                     <li><a href="http://wikipedia.com">Wikipedia.com</a></li>
+                     <li><a href="https://www.britannica.com/">Britannica.com</a></li>
+                  </ul>
+                  <h4>Entertainment</h4>
+                  <ul>
+                     <li><a href="https://youtube.com">Youtube.com</a></li>
+                     <li><a href="https://www.reddit.com/">Reddit.com</a></li>
+                  </ul>
+                  <h4>Shopping</h4>
+                  <ul>
+                     <li><a href="https://amazon.com">Amazon.com</a></li>
+                     <li><a href="https://ebay.com">Ebay.com</a></li>
+                     <li><a href="https://Etsy.com">Etsy.com</a></li>
+                     <li><a href="http://www.kitterytradingpost.com">Kitterytradingpost.com</a></li>
+                  </ul>
 
+               </div>
             </div>
-
-
-
-        </section>
-
-
-
-    </article>
-
-        <script type="text/javascript"><!--
-var maptileBaseUrl = "//map{s}.craigslist.org/t09/{z}/{x}/{y}.png";
---></script>
-    <script src="./craigslist _ sites_files/general-concat.min.js" type="text/javascript"></script>
-<script type="text/javascript"><!--
-        var iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = '//www.' + CL.url.baseDomain + '/static/localstorage.html?v=51a29e41f8e978141e4085ed4a77d170';
-        document.body.insertBefore(iframe, null);
-    --></script><iframe src="./craigslist _ sites_files/localstorage.html" style="display: none;"></iframe><script src="./craigslist _ sites_files/leaflet-concat.min.js" type="text/javascript"></script>
-<script src="./craigslist _ sites_files/maps.min.js" type="text/javascript"></script>
-<script src="./craigslist _ sites_files/sites-concat.min.js" type="text/javascript"></script>
-
-
-</body></html>
+         </section>
+      </article>
+      <script type="text/javascript"><!--
+         var maptileBaseUrl = "//map{s}.craigslist.org/t09/{z}/{x}/{y}.png";
+         -->
+      </script>
+      <script src="./craigslist _ sites_files/general-concat.min.js" type="text/javascript"></script>
+      <script type="text/javascript"><!--
+         var iframe = document.createElement('iframe');
+         iframe.style.display = 'none';
+         iframe.src = '//www.' + CL.url.baseDomain + '/static/localstorage.html?v=51a29e41f8e978141e4085ed4a77d170';
+         document.body.insertBefore(iframe, null);
+         -->
+      </script><iframe src="./craigslist _ sites_files/localstorage.html" style="display: none;"></iframe><script src="./craigslist _ sites_files/leaflet-concat.min.js" type="text/javascript"></script>
+      <script src="./craigslist _ sites_files/maps.min.js" type="text/javascript"></script>
+      <script src="./craigslist _ sites_files/sites-concat.min.js" type="text/javascript"></script>
+   </body>
+</html>
