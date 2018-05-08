@@ -9,6 +9,7 @@
       <link type="text/css" rel="stylesheet" media="all" href="./craigslist _ sites_files/cl.css">
       <link type="text/css" rel="stylesheet" media="all" href="./craigslist _ sites_files/leaflet.css">
       <link type="text/css" rel="stylesheet" media="all" href="./craigslist _ sites_files/MarkerCluster.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <!--[if lt IE 9]>
       <script src="//www.craigslist.org/js/html5shiv.min.js?v=c0739b14a84b052680cdee44fea07435" type="text/javascript" ></script>
       <script src="//www.craigslist.org/js/respond-fork.min.js?v=247e877d69233f6f77bff30aca7b5473" type="text/javascript" ></script>
@@ -23,7 +24,8 @@
          /* background-image: url("aa.gif"); */
          }
          h4{
-         font-size: 40px;
+         font-size: 35px;
+
          }
          li{
          font-size:25px;
@@ -31,53 +33,23 @@
          body{
            /* background-image: url("aa.gif") */
          }
+         i{
+           color:#101D42
+         }
       </style>
-      <script type="text/javascript"><!--
-         function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
-         var pagetype, pagemode;
-         (function(){
-             var h = document.documentElement;
-             h.className = h.className.replace('no-js', 'js');
-             var b = document.body;
-             var bodyClassList = b.className.split(/\s+/);;
-             pagetype = bodyClassList[0]; // dangerous assumption
-             var fmt = C('cl_fmt');
-             if ( fmt === 'regular' || fmt === 'mobile' ) {
-                 pagemode = fmt;
-             } else if (screen.width <= 480) {
-                 pagemode = 'mobile';
-             } else {
-                 pagemode = 'regular';
-             }
-             pagemode = pagemode === 'mobile' ? 'mobile' : 'desktop';
-             bodyClassList.push(pagemode);
-             if (C('hidesearch') === '1' && pagemode !== 'mobile') {
-                 bodyClassList.push('hide-search');
-             }
-             var width = window.innerWidth || document.documentElement.clientWidth;
-             if (width > 1000) { bodyClassList.push('w1024'); }
-             if (typeof window.sectionBase !== 'undefined') {
-                 var mode = (decodeURIComponent(C('cl_tocmode') || '').match(new RegExp(window.sectionBase + ':([^,]+)', 'i')) || {})[1] || window.defaultView;
-                 if (mode) {
-                     bodyClassList.push(mode);
-                 }
-             }
-             b.className = bodyClassList.join(' ');
-         }());
-         -->
-      </script>
+
       <article class="page-container">
-         <div id="logo">Websites </div>
+         <div id="logo" style="color:#101D42">Websites </div>
          <section class="body">
             <div class="colmask">
                <div class="box box_1">
-                 <h4>Search</h4>
+                 <h4>Search <i class="fa fa-search"></i></h4>
                  <ul>
                     <li><a href="https://www.google.com/">Google.com</a></li>
                     <li><a href="https://www.bing.com/">Bing.com</a></li>
                     <li><a href="https://www.ecosia.org/">Ecosia.org</a></li>
                  </ul>
-                  <h4>News</h4>
+                  <h4>News <i class="fa fa-newspaper-o"></i></h4>
                   <ul>
                      <li><a href="https://news.google.com/">News.google.com</a></li>
                      <li><a href="http://www.bbc.com/">Bbc.com</a></li>
@@ -86,14 +58,14 @@
                      <li><a href="https://www.cnn.com">Cnn.com</a></li>
 
                   </ul>
-                  <h4>Weather</h4>
+                  <h4>Weather <i class="fa fa-sun-o"></i></h4>
                   <ul>
                      <li><a href="http://www.intellicast.com/Local/Weather.aspx?location=USNH0073">Intellicast.com</a></li>
                   </ul>
                </div>
                <div class="box box_2">
 
-                  <h4>Email</h4>
+                  <h4>Email <i class="fa fa-envelope-o"></i></h4>
                   <ul>
                      <li><a href="https://gmail.com">Gmail.com</a></li>
                      <li><a href="https://login.yahoo.com/">Login.yahoo.com</a></li>
@@ -101,69 +73,65 @@
                      <li><a href="https://www.icloud.com/#mail">iCloud</a></li>
                   </ul>
 
-                  <h4>Social media</h4>
+                  <h4>Social media <i class="fa fa-id-badge"></i></h4>
                   <ul>
                      <li><a href="https://Facebook.com">Facebook.com</a></li>
                      <li><a href="https://plus.google.com">Plus.google.com</a></li>
                      <li><a href="https://twitter.com">Twitter.com</a></li>
                   </ul>
-                  <h4>Events</h4>
+                  <h4>Events <i class="fa fa-group"></i></h4>
                   <ul>
                      <li><a href="https://patch.com/new-hampshire/exeter">Patch.com</a></li>
                      <li><a href="https://www.exeternh.gov/community/annual-events">exeternh.gov</a></li>
                      <li><a href="https://calendar.exeter.edu/">calendar.exeter.edu</a></li>
                   </ul>
                 </div>
+
                 <div  class="box box_3">
-                  <h4>Social media</h4>
-                  <ul>
-                     <li><a href="https://Facebook.com">Facebook.com</a></li>
-                     <li><a href="https://plus.google.com">Plus.google.com</a></li>
-                     <li><a href="https://twitter.com">Twitter.com</a></li>
-                  </ul>
-                  <h4>Communication</h4>
-                  <ul>
-                     <li><a href="https://Messenger.com">Messenger.com</a></li>
-                     <li><a href="https://Skype.com">Skype.com</a></li>
-                     <li><a href="https://Hangouts.google.com">Hangouts.google.com</a></li>
-                  </ul>
-                </div>
-                <div  class="box box_4">
-                  <h4>Education</h4>
+                  <h4>Education <i class="fa fa-mortar-board"></i></h4>
                   <ul>
                      <li><a href="http://wikipedia.com">Wikipedia.com</a></li>
                      <li><a href="https://www.britannica.com/">Britannica.com</a></li>
                   </ul>
-                  <h4>Entertainment</h4>
+                  <h4>Entertainment <i class="fa fa-tv"></i></h4>
                   <ul>
                      <li><a href="https://youtube.com">Youtube.com</a></li>
                      <li><a href="https://www.reddit.com/">Reddit.com</a></li>
                   </ul>
-                  <h4>Shopping</h4>
+                  <h4>Shopping <i class="fa fa-shopping-cart"></i></h4>
                   <ul>
                      <li><a href="https://amazon.com">Amazon.com</a></li>
                      <li><a href="https://ebay.com">Ebay.com</a></li>
                      <li><a href="https://Etsy.com">Etsy.com</a></li>
                      <li><a href="http://www.kitterytradingpost.com">Kitterytradingpost.com</a></li>
+                     <li><a href="http://www.llbean.com">Llbean.com</a></li>
+                     <li><a href="http://www.stonewallkitchen.com">Stonewallkitchen.com</a></li>
                   </ul>
 
+               </div>
+               <div  class="box box_4">
+
+                 <h4>Communication <i class="fa fa-phone"></i></h4>
+                 <ul>
+                    <li><a href="https://Messenger.com">Messenger.com</a></li>
+                    <li><a href="https://Skype.com">Skype.com</a></li>
+                    <li><a href="https://Hangouts.google.com">Hangouts.google.com</a></li>
+                 </ul>
+                 <h4>Government <i class="fa fa-gavel"></i></h4>
+                 <ul>
+                    <li><a href="https://nh.gov">Nh.gov</a></li>
+                    <li><a href="https://medicare.gov">Medicare.gov</a></li>
+                 </ul>
+                 <h4>Finance <i class="fa fa-money"></i></h4>
+                 <ul>
+                    <li><a href="https://paypal.com">Paypal.com</a></li>
+                    <li><a href="https://medicare.gov">Medicare.gov</a></li>
+                 </ul>
                </div>
             </div>
          </section>
       </article>
-      <script type="text/javascript"><!--
-         var maptileBaseUrl = "//map{s}.craigslist.org/t09/{z}/{x}/{y}.png";
-         -->
-      </script>
-      <script src="./craigslist _ sites_files/general-concat.min.js" type="text/javascript"></script>
-      <script type="text/javascript"><!--
-         var iframe = document.createElement('iframe');
-         iframe.style.display = 'none';
-         iframe.src = '//www.' + CL.url.baseDomain + '/static/localstorage.html?v=51a29e41f8e978141e4085ed4a77d170';
-         document.body.insertBefore(iframe, null);
-         -->
-      </script><iframe src="./craigslist _ sites_files/localstorage.html" style="display: none;"></iframe><script src="./craigslist _ sites_files/leaflet-concat.min.js" type="text/javascript"></script>
-      <script src="./craigslist _ sites_files/maps.min.js" type="text/javascript"></script>
-      <script src="./craigslist _ sites_files/sites-concat.min.js" type="text/javascript"></script>
+
+
    </body>
 </html>
