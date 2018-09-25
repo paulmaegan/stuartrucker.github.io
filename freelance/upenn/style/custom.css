@@ -67,3 +67,22 @@ content:”\201D”;
   margin-top:5px;
   color:#bfbfbf
 }
+.black-header-color{
+  color:#43423F;
+}
+
+.full-width-content{
+  text-align: left;
+  width: 100%;
+  padding: 0;
+}
+.smaller-subtitle{
+  font-size:140%;
+}
+.big-sidebar-list{
+  font-size:17px
+}
+
+ul.big-sidebar-list > li {
+  margin-top: 6px;
+}
